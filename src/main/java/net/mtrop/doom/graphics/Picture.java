@@ -324,12 +324,12 @@ public class Picture implements BinaryObject, GraphicObject
 							topDelta += postBytes.size();
 						}
 						postBytes.reset();
-						
-						if (topDelta == 254)
+
+						if (topDelta >= 254)
 						{
 							writePost(254, postBytes, buffer);
 							tallPatch = true;
-							topDelta = 0;
+							topDelta = topDelta % 255;
 						}
 
 						if (b == PIXEL_TRANSLUCENT)
